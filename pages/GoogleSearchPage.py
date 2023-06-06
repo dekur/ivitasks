@@ -56,6 +56,7 @@ class GoogleSearchPage(BasePage):
         return self.return_element_if_present(GoogleSearchPageLocators.wikipedia_link_to_ivi)
 
     def go_to_page(self, expected_page_num: int):
+        # функция для перехода на страницы поиска
         if expected_page_num == 2:
             self.find_element(GoogleSearchPageLocators.google_page_2).click()
         elif expected_page_num == 3:
@@ -66,19 +67,6 @@ class GoogleSearchPage(BasePage):
             self.find_element(GoogleSearchPageLocators.google_page_5).click()
         else:
             self.find_element(GoogleSearchPageLocators.next_button).click()
-
-    def go_to_search_page(self, expected_page_num: int):
-        # берем селектор для цифр страниц в нижнем меню
-        base_tuple = GoogleSearchPageLocators.navigation_menu_bottom_pages
-        # берем текст из селектора
-        selector = base_tuple[1]
-        # добавляем в текст строчку с нужной страницей
-        selector_with_page_num = selector + ' [aria-label="Page %s"]' % expected_page_num
-        # собираем заново селектор с новой строчкой
-        updated_tuple = (base_tuple[0], selector_with_page_num)
-        # находим элемент и кликаем
-        page_button = self.find_element(updated_tuple)
-        page_button.click()
 
     def go_to_search_type(self, expected_search_type: str):
         # собираем все типы поиска

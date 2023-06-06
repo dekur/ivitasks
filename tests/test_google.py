@@ -33,8 +33,8 @@ def test_ivi_rating_from_google_search_and_google_play(browser):
         link = search_page.google_play_ivi_rating()  # первая проверка будет на первой странице
         if link:  # если элемент найден то берем рейтинг
             rating = link.text
-        else:  # если нет то перейдем на вторую страницу
-            search_page.go_to_search_page(i)
+        else:  # если нет то перейдем на следующую страницу
+            search_page.go_to_page(i)
 
     assert rating == "Рейтинг: %s" % rating_from_google_play
 
@@ -49,10 +49,10 @@ def test_wikipedia_has_link_to_ivi(browser):
         if link:  # если элемент найден то кликаем
             link.click()
             break
-        else:  # если нет то перейдем на вторую страницу
-            search_page.go_to_search_page(i)
+        else:  # если нет то перейдем на следующую страницу
+            search_page.go_to_page(i)
 
     wikipedia_page = WikipediaPage(browser)
-    wikipedia_page.page_has_loaded() # время на полную загрузку страницы
+    wikipedia_page.page_has_loaded()  # время на полную загрузку страницы
     assert wikipedia_page.wikipedia_logo()  # проверяем что попали на википедию
     assert wikipedia_page.ivi_link_element()  # находим ссылку на иви
