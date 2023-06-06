@@ -47,7 +47,7 @@ https://stackoverflow.com/questions/26566799/wait-until-page-is-loaded-with-sele
 ```
 https://www.pvsm.ru/python/333802
 ```
-Идеи для циклов
+Для реализации второго и третьего тестов понадобились циклы, идеи взял здесь
 ```
 https://www.w3schools.com/python/python_for_loops.asp
 ```
